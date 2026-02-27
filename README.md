@@ -19,6 +19,7 @@ This project is **NOT** compatible with:
 - **Clarity V1**
 - **Millionware**
 - **Fatality Legacy**
+- **Aimware Legacy**
 
 > No other versions are supported at this time.
 

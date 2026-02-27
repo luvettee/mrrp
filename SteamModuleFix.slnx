@@ -1,5 +1,6 @@
 <Solution>
   <Configurations>
+    <BuildType Name="Aimware Legacy" />
     <BuildType Name="Clarity" />
     <BuildType Name="Fatality Legacy" />
     <BuildType Name="Millionware" />

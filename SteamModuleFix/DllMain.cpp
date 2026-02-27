@@ -69,6 +69,31 @@ BOOL WINAPI hkCreateProcessW( LPCWSTR lpApplicationName, LPWSTR lpCommandLine, L
                 MessageBoxA(0, "Failed to allocate memory for Fatality (Legacy)", "SteamModule", MB_OK | MB_ICONERROR);
 				return 0;
 			}
+        #elif AIMWARE_LEGACY
+            if (!VirtualAllocEx(lpProcessInformation->hProcess, reinterpret_cast<void*>(0x1B250000), 0x1F000u, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE)) {
+                MessageBoxA(0, "Failed to allocate memory for Aimware (Legacy) (Part 1)", "SteamModule", MB_OK | MB_ICONERROR);
+                return 0;
+            }
+            if (!VirtualAllocEx(lpProcessInformation->hProcess, reinterpret_cast<void*>(0x1B270000), 0x1A000u, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE)) {
+                MessageBoxA(0, "Failed to allocate memory for Aimware (Legacy) (Part 2)", "SteamModule", MB_OK | MB_ICONERROR);
+                return 0;
+            }
+            if (!VirtualAllocEx(lpProcessInformation->hProcess, reinterpret_cast<void*>(0x2B920000), 0xE3000u, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE)) {
+                MessageBoxA(0, "Failed to allocate memory for Aimware (Legacy) (Part 3)", "SteamModule", MB_OK | MB_ICONERROR);
+                return 0;
+            }
+            if (!VirtualAllocEx(lpProcessInformation->hProcess, reinterpret_cast<void*>(0x6D450000), 0x39000u, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE)) {
+                MessageBoxA(0, "Failed to allocate memory for Aimware (Legacy) (Part 4)", "SteamModule", MB_OK | MB_ICONERROR);
+                return 0;
+            }
+            if (!VirtualAllocEx(lpProcessInformation->hProcess, reinterpret_cast<void*>(0x1B290000), 0x5000u, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE)) {
+                MessageBoxA(0, "Failed to allocate memory for Aimware (Legacy) (Part 5)", "SteamModule", MB_OK | MB_ICONERROR);
+                return 0;
+            }
+            if (!VirtualAllocEx(lpProcessInformation->hProcess, reinterpret_cast<void*>(0x1B240000), 0xA000u, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE)) {
+                MessageBoxA(0, "Failed to allocate memory for Aimware (Legacy) (Part 6)", "SteamModule", MB_OK | MB_ICONERROR);
+                return 0;
+            }
         #endif
     }
 
@@ -106,6 +131,8 @@ DWORD WINAPI SetupHooks(LPVOID lpParam)
 	    const char* moduleName = "Millionware";
     #elif FATALITY_LEGACY
 	const char* moduleName = "Fatality (Legacy)";
+    #elif AIMWARE_LEGACY
+	const char* moduleName = "Aimware (Legacy)";
     #endif
 
     char message[256];
