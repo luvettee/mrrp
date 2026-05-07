@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="girlyboys/girlyboys.vcxproj" Id="994792f4-6ec3-44e8-9c1a-94f185ce429d" />
+</Solution>
